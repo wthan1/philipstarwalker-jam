@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://t6us2a67q6fx"]
+
+[ext_resource type="Script" path="res://nodes/playerspawn.gd" id="1_fq5u8"]
+[ext_resource type="Script" path="res://nodes/playerexit.gd" id="2_ajpt2"]
+[ext_resource type="TileSet" uid="uid://cufgw4qwjjiwf" path="res://scenes/levels/tilesets/mapset.tres" id="3_thxrx"]
+[ext_resource type="TileSet" uid="uid://drq85grrhknun" path="res://scenes/levels/tilesets/pipeset.tres" id="4_na7uq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5vay"]
+
+[node name="7" type="Node2D"]
+
+[node name="spawn" type="Marker2D" parent="."]
+position = Vector2(420, 300)
+script = ExtResource("1_fq5u8")
+angle = -3.14159
+velocity = Vector2(0, 200)
+
+[node name="exit" type="Area2D" parent="."]
+position = Vector2(600, 450)
+script = ExtResource("2_ajpt2")
+destination = "res://scenes/levels/8.tscn"
+
+[node name="shape" type="CollisionShape2D" parent="exit"]
+shape = SubResource("RectangleShape2D_s5vay")
+
+[node name="map" type="TileMap" parent="."]
+position = Vector2(30, 240)
+tile_set = ExtResource("3_thxrx")
+format = 2
+layer_0/tile_data = PackedInt32Array(8, 458752, 805306368, 5, 458752, 805306368, 6, 458752, 805306368, 7, 458752, 805306368, 65544, 0, 0, 131080, 0, 0, 196616, 458752, 0, 65541, 0, 0, 131077, 0, 0, 196613, 917504, 0, 196614, 917504, 0, 196615, 917504, 0, 65543, 0, 0, 65542, 0, 0, 131078, 0, 0, 131079, 0, 0, 196617, 458752, 0, 196618, 524288, 1610612736, 10, 524288, 805306368, 9, 458752, 805306368, 65545, 0, 0, 65546, 65536, 1610612736, 131082, 65536, 1610612736, 131081, 0, 0, 196612, 524288, 0, 4, 524288, 1342177280, 131076, 458752, 1342177280, 65540, 458752, 1342177280)
+
+[node name="pipes" type="TileMap" parent="."]
+z_index = 1
+position = Vector2(150, 180)
+tile_set = ExtResource("4_na7uq")
+format = 2
+layer_0/tile_data = PackedInt32Array(131076, 65540, 0, 65540, 458756, 0, 65541, 262148, 0, 65539, 327684, 0, 131075, 262148, 0, 262151, 4, 0, 131074, 589828, 0, 65538, 393220, 0)

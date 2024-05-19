@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://cveko7rq5xajr"]
+
+[ext_resource type="Texture2D" uid="uid://c81w6w8u0nd48" path="res://nodes/player/player.png" id="1_ieb82"]
+[ext_resource type="Script" path="res://nodes/player/player.gd" id="1_rie5n"]
+[ext_resource type="PackedScene" uid="uid://vpm2gjst8l1v" path="res://scenes/menus/pause/pausemenu.tscn" id="3_o2qaq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ff0c"]
+radius = 14.0
+height = 88.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcmqr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn5bs"]
+radius = 6.08276
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qehe8"]
+radius = 9.0
+height = 78.0
+
+[node name="player" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_rie5n")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = ExtResource("1_ieb82")
+vframes = 2
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_2ff0c")
+
+[node name="floorcheck" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="shape" type="CollisionShape2D" parent="floorcheck"]
+position = Vector2(0, 31.5)
+shape = SubResource("RectangleShape2D_qcmqr")
+
+[node name="clearcheck" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 0
+collision_mask = 4
+
+[node name="shape" type="CollisionShape2D" parent="clearcheck"]
+position = Vector2(0, -76)
+shape = SubResource("CircleShape2D_cn5bs")
+
+[node name="wallcheck" type="Area2D" parent="clearcheck"]
+collision_layer = 0
+
+[node name="shape" type="CollisionShape2D" parent="clearcheck/wallcheck"]
+position = Vector2(0, -76)
+shape = SubResource("CircleShape2D_cn5bs")
+
+[node name="cam" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="pausemenu" parent="cam" instance=ExtResource("3_o2qaq")]
+z_index = 4
+position = Vector2(-960, 0)
+
+[node name="stuckcheck" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="shape" type="CollisionShape2D" parent="stuckcheck"]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_qehe8")
+
+[node name="speedruntimer" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="back" type="ColorRect" parent="speedruntimer"]
+offset_left = -34.5
+offset_right = 34.5
+offset_bottom = 24.0
+color = Color(0, 0, 0, 0.313726)
+
+[node name="label" type="RichTextLabel" parent="speedruntimer"]
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 40.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+text = "99:99.99"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

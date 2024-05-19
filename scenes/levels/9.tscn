@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d04in6060sr6y"]
+
+[ext_resource type="Script" path="res://nodes/playerspawn.gd" id="1_sf1bk"]
+[ext_resource type="Script" path="res://nodes/playerexit.gd" id="2_gmt3x"]
+[ext_resource type="TileSet" uid="uid://cufgw4qwjjiwf" path="res://scenes/levels/tilesets/mapset.tres" id="3_yf5wl"]
+[ext_resource type="TileSet" uid="uid://drq85grrhknun" path="res://scenes/levels/tilesets/pipeset.tres" id="4_vmmc2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5vay"]
+
+[node name="9" type="Node2D"]
+
+[node name="spawn" type="Marker2D" parent="."]
+position = Vector2(840, 510)
+script = ExtResource("1_sf1bk")
+angle = -1.49959
+velocity = Vector2(-350, -100)
+
+[node name="exit" type="Area2D" parent="."]
+position = Vector2(150, 570)
+script = ExtResource("2_gmt3x")
+destination = "res://scenes/levels/10.tscn"
+
+[node name="shape" type="CollisionShape2D" parent="exit"]
+shape = SubResource("RectangleShape2D_s5vay")
+
+[node name="map" type="TileMap" parent="."]
+position = Vector2(540, 300)
+tile_set = ExtResource("3_yf5wl")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 851968, 1342177280, 262145, 851968, 1879048192, 262146, 458752, 0, 262147, 458752, 0, 262148, 458752, 0, 262149, 524288, 1610612736, 65541, 524288, 805306368, 131077, 458752, 1610612736, 196613, 458752, 1610612736, 65538, 458752, 805306368, 65539, 458752, 805306368, 65540, 458752, 805306368, 131073, 65536, 1342177280, 196609, 65536, 1342177280, 131076, 0, 0, 131075, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 131074, 0, 0, 327672, 524288, 0, 131064, 458752, 1342177280, 131066, 458752, 1610612736, 327674, 524288, 1610612736, 327673, 458752, 0, 262136, 458752, 1342177280, 196600, 458752, 1342177280, 131065, 0, 0, 196602, 458752, 1610612736, 262138, 458752, 1610612736, 196601, 0, 0, 262137, 0, 0, -65539, 1048576, 1342177280, 5, 262144, 1342177280, -65531, 262144, 1342177280, -131067, 262144, 1342177280, -131071, 1048576, 1342177280, -196603, 262144, 1342177280, 65530, 524288, 805306368, 65529, 65536, 805306368, 65528, 851968, 536870912, -131075, 1048576, 1342177280, -196607, 1048576, 1342177280)
+
+[node name="pipes" type="TileMap" parent="."]
+z_index = 1
+position = Vector2(0, -60)
+tile_set = ExtResource("4_vmmc2")
+format = 2
+layer_0/tile_data = PackedInt32Array(655374, 196612, 0, 589837, 4, 1610612736, 589838, 393220, 0, 655362, 4, 0, 655361, 393220, 0, 458765, 196612, 0, 458766, 131076, 1610612736)

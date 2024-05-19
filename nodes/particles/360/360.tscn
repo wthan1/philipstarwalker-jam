@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://jqoi12lvg2tu"]
+
+[ext_resource type="Texture2D" uid="uid://d387ly6g0u4gb" path="res://nodes/particles/360/kewlgraphix.png" id="1_8qan8"]
+[ext_resource type="Script" path="res://nodes/particles/360/360.gd" id="2_hhh4d"]
+
+[node name="360" type="Sprite2D"]
+z_index = 3
+texture_filter = 1
+texture = ExtResource("1_8qan8")
+vframes = 2
+script = ExtResource("2_hhh4d")

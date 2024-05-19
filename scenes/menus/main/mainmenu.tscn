@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqklx3pudmr61"]
+
+[ext_resource type="Script" path="res://scenes/menus/main/mainmenu.gd" id="1_1eh2m"]
+[ext_resource type="PackedScene" uid="uid://d2gqpvhe1nbhe" path="res://nodes/buttons/pipebutton/pipebutton.tscn" id="2_5hjhg"]
+[ext_resource type="Script" path="res://scenes/menus/buttonholder.gd" id="2_s54x5"]
+[ext_resource type="PackedScene" uid="uid://bt2tudvfdnrkp" path="res://nodes/buttons/pipetoggle/pipetoggle.tscn" id="4_nmc00"]
+[ext_resource type="Texture2D" uid="uid://b0wj5dncvfn1r" path="res://scenes/menus/main/painting.png" id="5_c5jxe"]
+
+[node name="mainmenu" type="Node2D"]
+script = ExtResource("1_1eh2m")
+
+[node name="title" type="RichTextLabel" parent="."]
+offset_left = 16.0
+offset_right = 871.0
+offset_bottom = 113.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 42
+text = "PHILIP STARWALKER"
+
+[node name="main" type="Node2D" parent="."]
+script = ExtResource("2_s54x5")
+
+[node name="play" parent="main" instance=ExtResource("2_5hjhg")]
+position = Vector2(-54, 88)
+text = "          play"
+
+[node name="levelselect" parent="main" instance=ExtResource("2_5hjhg")]
+position = Vector2(-54, 152)
+text = "          level selector"
+
+[node name="settings" parent="main" instance=ExtResource("2_5hjhg")]
+position = Vector2(-54, 216)
+text = "          settings"
+
+[node name="quit" parent="main" instance=ExtResource("2_5hjhg")]
+position = Vector2(-54, 280)
+text = "          QUIT"
+
+[node name="settings" type="Node2D" parent="."]
+position = Vector2(-192, 0)
+script = ExtResource("2_s54x5")
+active = false
+
+[node name="back" parent="settings" instance=ExtResource("2_5hjhg")]
+position = Vector2(-54, 152)
+text = "          back"
+
+[node name="timer" parent="settings" instance=ExtResource("4_nmc00")]
+position = Vector2(-54, 88)
+text = "          timer "
+
+[node name="painting" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(587, 464)
+texture = ExtResource("5_c5jxe")
+
+[connection signal="pressed" from="main/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="main/levelselect" to="." method="_on_levelselect_pressed"]
+[connection signal="pressed" from="main/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="main/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="settings/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="settings/timer" to="." method="_on_timer_pressed"]

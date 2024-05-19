@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cveko7rq5xajr"]
+
+[ext_resource type="Texture2D" uid="uid://c81w6w8u0nd48" path="res://nodes/player/player.png" id="1_ieb82"]
+[ext_resource type="Script" path="res://nodes/player/player.gd" id="1_rie5n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ff0c"]
+radius = 14.0
+height = 88.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcmqr"]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_rie5n")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = ExtResource("1_ieb82")
+vframes = 2
+
+[node name="tempindicator" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, -48)
+scale = Vector2(1.4, 0.166667)
+texture = ExtResource("1_ieb82")
+vframes = 2
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_2ff0c")
+
+[node name="floorcheck" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="floorcheck"]
+position = Vector2(0, 31.5)
+shape = SubResource("RectangleShape2D_qcmqr")
+
+[node name="clearcheck" type="Area2D" parent="."]
+position = Vector2(0, -120)
+
+[node name="shape" type="CollisionShape2D" parent="clearcheck"]
+shape = SubResource("CapsuleShape2D_2ff0c")

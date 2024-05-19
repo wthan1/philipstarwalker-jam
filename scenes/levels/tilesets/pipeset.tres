@@ -1,0 +1,21 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://drq85grrhknun"]
+
+[ext_resource type="Texture2D" uid="uid://c265m4gnvemi5" path="res://scenes/levels/tilesets/pipe.png" id="1_0rgsi"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wmjou"]
+texture = ExtResource("1_0rgsi")
+texture_region_size = Vector2i(60, 60)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+
+[resource]
+tile_size = Vector2i(60, 60)
+sources/4 = SubResource("TileSetAtlasSource_wmjou")

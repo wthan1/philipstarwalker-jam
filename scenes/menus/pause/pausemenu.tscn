@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://vpm2gjst8l1v"]
+
+[ext_resource type="Script" path="res://scenes/menus/buttonholder.gd" id="1_eqybd"]
+[ext_resource type="Script" path="res://scenes/menus/pause/pausemenu.gd" id="1_v5oi4"]
+[ext_resource type="PackedScene" uid="uid://d2gqpvhe1nbhe" path="res://nodes/buttons/pipebutton/pipebutton.tscn" id="2_df0bi"]
+[ext_resource type="Texture2D" uid="uid://b8po8obbqrniy" path="res://scenes/menus/pause/dark.png" id="4_3rrsy"]
+
+[node name="pausemenu" type="Node2D"]
+script = ExtResource("1_v5oi4")
+
+[node name="title" type="RichTextLabel" parent="."]
+offset_left = 16.0
+offset_right = 871.0
+offset_bottom = 113.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 42
+text = "PHILIP STARWALKER"
+
+[node name="main" type="Node2D" parent="."]
+script = ExtResource("1_eqybd")
+
+[node name="respawn" parent="main" instance=ExtResource("2_df0bi")]
+position = Vector2(-54, 88)
+text = "          respawn"
+
+[node name="mainmenu" parent="main" instance=ExtResource("2_df0bi")]
+position = Vector2(-54, 152)
+text = "          main menu"
+
+[node name="quit" parent="main" instance=ExtResource("2_df0bi")]
+position = Vector2(-54, 212)
+text = "          QUIT"
+
+[node name="dark" type="Sprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_3rrsy")
+centered = false
+
+[connection signal="pressed" from="main/respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="main/mainmenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="pressed" from="main/quit" to="." method="_on_quit_pressed"]
