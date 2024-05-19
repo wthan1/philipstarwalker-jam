@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqklx3pudmr61"]
+[gd_scene load_steps=7 format=3 uid="uid://cqklx3pudmr61"]
 
 [ext_resource type="Script" path="res://scenes/menus/main/mainmenu.gd" id="1_1eh2m"]
 [ext_resource type="PackedScene" uid="uid://d2gqpvhe1nbhe" path="res://nodes/buttons/pipebutton/pipebutton.tscn" id="2_5hjhg"]
 [ext_resource type="Script" path="res://scenes/menus/buttonholder.gd" id="2_s54x5"]
 [ext_resource type="PackedScene" uid="uid://bt2tudvfdnrkp" path="res://nodes/buttons/pipetoggle/pipetoggle.tscn" id="4_nmc00"]
 [ext_resource type="Texture2D" uid="uid://b0wj5dncvfn1r" path="res://scenes/menus/main/painting.png" id="5_c5jxe"]
+[ext_resource type="Texture2D" uid="uid://oxdb4unl2lbw" path="res://scenes/menus/main/gwjstamp.png" id="6_280ra"]
 
 [node name="mainmenu" type="Node2D"]
 script = ExtResource("1_1eh2m")
@@ -32,12 +33,16 @@ text = "          level selector"
 position = Vector2(-54, 216)
 text = "          settings"
 
-[node name="quit" parent="main" instance=ExtResource("2_5hjhg")]
+[node name="credits" parent="main" instance=ExtResource("2_5hjhg")]
 position = Vector2(-54, 280)
+text = "          credits"
+
+[node name="quit" parent="main" instance=ExtResource("2_5hjhg")]
+position = Vector2(-54, 344)
 text = "          QUIT"
 
 [node name="settings" type="Node2D" parent="."]
-position = Vector2(-192, 0)
+position = Vector2(-336, 0)
 script = ExtResource("2_s54x5")
 active = false
 
@@ -49,14 +54,46 @@ text = "          back"
 position = Vector2(-54, 88)
 text = "          timer "
 
+[node name="credits" type="Node2D" parent="."]
+position = Vector2(-336, 0)
+script = ExtResource("2_s54x5")
+active = false
+
+[node name="back" parent="credits" instance=ExtResource("2_5hjhg")]
+position = Vector2(-54, 88)
+text = "          back"
+
+[node name="credits" type="RichTextLabel" parent="credits"]
+offset_left = 8.0
+offset_top = 125.0
+offset_right = 330.0
+offset_bottom = 473.0
+theme_override_font_sizes/normal_font_size = 42
+text = "PLAYTESTERS:
+NotAGoat
+Deschickenman
+Joelguy
+Mlegs
+Bobo"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
 [node name="painting" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(587, 464)
 texture = ExtResource("5_c5jxe")
 
+[node name="Gwjstamp" type="Sprite2D" parent="."]
+position = Vector2(101, 628)
+scale = Vector2(0.624088, 0.624088)
+texture = ExtResource("6_280ra")
+
 [connection signal="pressed" from="main/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="main/levelselect" to="." method="_on_levelselect_pressed"]
 [connection signal="pressed" from="main/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="main/credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="main/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="settings/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="settings/timer" to="." method="_on_timer_pressed"]
+[connection signal="pressed" from="credits/back" to="." method="_on_back_pressed"]

@@ -17,6 +17,8 @@ func _on_quit_pressed(): get_tree().quit()
 
 func _on_settings_pressed(): swap_panel("settings")
 
+func _on_credits_pressed(): swap_panel("credits")
+
 func _on_back_pressed(): swap_panel("main")
 
 func _on_timer_pressed(val): settings.timer = val

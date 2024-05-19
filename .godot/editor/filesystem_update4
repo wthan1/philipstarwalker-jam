@@ -1,0 +1,12 @@
+res://scenes/menus/main/mainmenu.tscn
+res://scenes/levels/tilesets/mapset.tres
+res://scenes/levels/tilesets/pipeset.tres
+res://nodes/player/player.tscn
+res://scenes/menus/pause/pausemenu.tscn
+res://scenes/levels/9.tscn
+res://scenes/levels/levelselector.tscn
+res://scenes/levels/6.tscn
+res://scenes/levels/5.tscn
+res://scenes/levels/10.tscn
+res://scenes/levels/fall/fall.tscn
+res://scenes/menus/main/mainmenu.gd

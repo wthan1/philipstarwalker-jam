@@ -1,0 +1,14 @@
+RichTextLabel
+destinationhint
+Sprite2D
+Node2D
+ColorRect
+CollisionShape2D
+Panel
+Area2D
+Camera2D
+TileMap
+Button
+Control
+Marker2D
+CharacterBody2D
